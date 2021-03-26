@@ -1,6 +1,7 @@
 import click
 import random
 import json
+import time
 import pandas as pd
 from faker import Faker
 from collections import OrderedDict
@@ -35,7 +36,8 @@ def main(temp):
 
     df = pd.DataFrame(data)
     print(df.head())
-    df.to_csv('output.csv', index=False)
+    fname = str(time.time()).split('.')[0]
+    df.to_csv(f'{fname}.csv', index=False)
 
 if __name__ == "__main__":
     main()
