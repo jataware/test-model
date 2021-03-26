@@ -6,8 +6,8 @@ This repo is for model testing. It provides a test dummy model.
 
 Install with `pip -r requirements.txt`.
 
-Next, edit the rainfall setting in `parameters.json` to a value between 1 and 100.
+Next, edit the rainfall setting in `parameters.json` to a `float` between -1 and 1 (e.g. `0.7`), where 0 is no percentage perturbation to rainfall (baseline).
 
-Then run with `python3 main.py output.csv`.
+Then run with `python3 main.py --temp 1.2` where the value passed to `--temp` is the percentage perturbation to temperature (0 is baseline).
 
-You can replace `output.csv` in the above command with the name of a CSV file you wish to output.
+Outputs are stored to `output.csv`.
