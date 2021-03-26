@@ -7,7 +7,7 @@ from collections import OrderedDict
 import urllib.request
 
 @click.command()
-@click.option('--temp', type=float, default=1.0, help='Percentage perturbation to temperature.')
+@click.option('--temp', type=float, required=True, help='Percentage perturbation to temperature.')
 def main(temp):
     params = open('parameters.json').read()
     params = json.loads(params)
