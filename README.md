@@ -18,7 +18,7 @@ Outputs are stored to `output/output_{{ rainfall }}_{{ temp }}.csv` (based on th
 docker build -t dummy-model .
 ```
 
-then
+then, from an empty directory (not the project base), where you have a copy of `parameters.json` filled with the value of your choosing, run:
 
 ```
 docker run -v $PWD/parameters.json:/model/parameters.json -v $PWD:/model/output dummy-model --temp=0.9
