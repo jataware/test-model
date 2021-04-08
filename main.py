@@ -6,6 +6,9 @@ import pandas as pd
 from faker import Faker
 from collections import OrderedDict
 import urllib.request
+import os
+if not os.path.exists('output'):
+    os.makedir('output')
 
 @click.command()
 @click.option('--temp', type=float, required=True, help='Percentage perturbation to temperature.')
@@ -36,8 +39,9 @@ def main(temp):
 
     df = pd.DataFrame(data)
     print(df.head())
-    fname = str(time.time()).split('.')[0]
-    df.to_csv(f'{fname}.csv', index=False)
+    fname = f"output_{params['rainfall']}_{temp}"
+    df.to_csv(f'output/{fname}.csv', index=False)
+    print(f"Saved output as /model/output/{fname}.csv")
 
 if __name__ == "__main__":
     main()
