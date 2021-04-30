@@ -8,7 +8,7 @@ from collections import OrderedDict
 import urllib.request
 import os
 if not os.path.exists('output'):
-    os.makedir('output')
+    os.mkdir('output')
 
 @click.command()
 @click.option('--temp', type=float, required=True, help='Percentage perturbation to temperature.')
