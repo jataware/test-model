@@ -4,7 +4,7 @@ This repo is for model testing. It provides a test dummy model.
 
 ## Usage
 
-Install with `pip -r requirements.txt`.
+Install with `pip install -r requirements.txt`.
 
 Next, edit the rainfall setting in `parameters.json` to a `float` between -1 and 1 (e.g. `0.7`), where 0 is no percentage perturbation to rainfall (baseline).
 
