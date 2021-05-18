@@ -7,5 +7,3 @@ WORKDIR /model
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python3", "main.py"]
-CMD ["--temp", "1.2"]

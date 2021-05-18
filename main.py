@@ -13,8 +13,12 @@ if not os.path.exists('output'):
 @click.command()
 @click.option('--temp', type=float, required=True, help='Percentage perturbation to temperature.')
 def main(temp):
-    params = open('parameters.json').read()
+    params = open('configFiles/parameters.json').read()
     params = json.loads(params)
+
+    configFileData = open('configFiles/fakeDataType.json').read()
+    configFileData = json.loads(configFileData)
+
 
     print('Beginning to download file from S3...')
 
@@ -30,11 +34,13 @@ def main(temp):
     data = []
 
     perturbation = 1 + (params['rainfall']*temp)
+    getColorHue = configFileData['color_hue']
     for i in range(100):
         obj = dict(latitude=f.latitude(),
                    longitude=f.longitude(),
                    date=f.date(),
-                   value=random.random()*perturbation)
+                   value=random.random()*perturbation,
+                   color_hue=f.color(hue=getColorHue))
         data.append(obj)
 
     df = pd.DataFrame(data)
