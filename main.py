@@ -7,8 +7,12 @@ from faker import Faker
 from collections import OrderedDict
 import urllib.request
 import os
+import requests
 if not os.path.exists('output'):
     os.mkdir('output')
+
+if not os.path.exists('media'):
+    os.mkdir('media')    
 
 @click.command()
 @click.option('--temp', type=float, required=True, help='Percentage perturbation to temperature.')
@@ -49,5 +53,19 @@ def main(temp):
     df.to_csv(f'output/{fname}.csv', index=False)
     print(f"Saved output as /model/output/{fname}.csv")
 
+
+def get_media():
+    image_urls = ['https://i.kym-cdn.com/entries/icons/facebook/000/000/774/lime-cat.jpg',
+                  'https://pbs.twimg.com/profile_images/1356088845821857795/1WWMDwIQ_400x400.jpg']
+    for url in image_urls:
+        filename = url.split('/')[-1]
+        img_data = requests.get(url).content
+        with open(f'media/{filename}', 'wb') as handler:
+            handler.write(img_data)
+        print(f"Wrote media: {filename}")
+    return
+
+
 if __name__ == "__main__":
+    get_media()
     main()
