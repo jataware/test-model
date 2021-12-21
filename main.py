@@ -69,3 +69,4 @@ def get_media():
 if __name__ == "__main__":
     get_media()
     main()
+    print("SUCCESS")
