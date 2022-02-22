@@ -1,6 +1,6 @@
-# Dummy Model
+# Test Model
 
-This repo is for model testing. It provides a test dummy model.
+This repo is for model testing. It provides a test model for testing Dojo's model registration workflow.
 
 ## Usage
 
