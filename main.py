@@ -54,7 +54,7 @@ def main(temp, space):
     df.to_csv(f'output/{output_handle}.csv', index=False)
     print(f"Saved output as /model/output/{output_handle}.csv")
 
-    fun_handle = f"output/{configFileData['magic_number']}.txt"
+    fun_handle = f"output/fun.txt"
     weighted_score = configFileData['magic_number']*max(0., min(1., params['score']))
     with open(fun_handle, "w") as file:
         file.write(
