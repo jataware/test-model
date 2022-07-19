@@ -57,7 +57,7 @@ def main(temp, space):
     fun_handle = f"output/{configFileData['magic_number']}.txt"
     with open(fun_handle, "w") as file:
         file.write(
-            f"{face}{' '*space}{max(0., min(1., params['score']))}"
+            f"{params['face']}{' '*space}{max(0., min(1., params['score']))}"
         )
 
 
