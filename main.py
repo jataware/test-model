@@ -16,7 +16,8 @@ if not os.path.exists('media'):
 
 @click.command()
 @click.option('--temp', type=float, required=True, help='Percentage perturbation to temperature.')
-def main(temp):
+@click.option('--space', type=int, required=True, help='Amount of spaces to put between face and score.')
+def main(temp, space):
     params = open('configFiles/parameters.json').read()
     params = json.loads(params)
 
@@ -49,9 +50,15 @@ def main(temp):
 
     df = pd.DataFrame(data)
     print(df.head())
-    fname = f"output_{params['rainfall']}_{temp}"
-    df.to_csv(f'output/{fname}.csv', index=False)
-    print(f"Saved output as /model/output/{fname}.csv")
+    output_handle = f"output_{params['rainfall']}_{temp}"
+    df.to_csv(f'output/{output_handle}.csv', index=False)
+    print(f"Saved output as /model/output/{output_handle}.csv")
+
+    fun_handle = f"output/{configFileData['magic_number']}.txt"
+    with open(fun_handle, "w") as file:
+        file.write(
+            f"{face}{' '*space}{max(0., min(1., params['score']))}"
+        )
 
 
 def get_media():
