@@ -55,9 +55,10 @@ def main(temp, space):
     print(f"Saved output as /model/output/{output_handle}.csv")
 
     fun_handle = f"output/{configFileData['magic_number']}.txt"
+    weighted_score = configFileData['magic_number']*max(0., min(1., params['score']))
     with open(fun_handle, "w") as file:
         file.write(
-            f"{params['face']}{' '*space}{max(0., min(1., params['score']))}\n"
+            f"{params['face']}{' '*space}{weighted_score}\n"
         )
 
 
